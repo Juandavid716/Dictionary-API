@@ -2,13 +2,28 @@ import React, { Component } from "react";
 import { InputGroup, Input, Button } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
+const APIKEY =
+  "dict.1.1.20200708T233043Z.9021847f94ce640d.5d6c9e082783e1177705a388b2229bc8970c18a7";
+const APIDICTIONARY =
+  "https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=" +
+  APIKEY +
+  "&lang=en-de&text=";
 class App extends Component {
   state = {
+    wordvalue: "",
+    traslation: "",
     word: "",
   };
   getWord() {
-    console.log(this.state.word);
+    fetch(APIDICTIONARY + this.state.wordvalue)
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({
+          traslation: data.def[0].tr[0].text,
+          word: this.state.wordvalue,
+        });
+        console.log();
+      });
   }
   render() {
     return (
@@ -22,10 +37,10 @@ class App extends Component {
                   <Input
                     type="text"
                     id="text"
-                    value={this.state.word}
+                    value={this.state.wordvalue}
                     onChange={(e) => {
                       let findWord = e.target.value;
-                      this.setState({ word: findWord });
+                      this.setState({ wordvalue: findWord });
                     }}
                   />
                 </div>
@@ -41,10 +56,18 @@ class App extends Component {
 
         <div className="d-flex flex-row bg-blue justify-content-around mt-5 bg-success">
           <div>
-            <h2>Word:</h2>
+            <h2>Word</h2>
           </div>
           <div>
             <h2>Meaning</h2>
+          </div>
+        </div>
+        <div className="d-flex flex-row justify-content-around ">
+          <div>
+            <h2>{this.state.word}</h2>
+          </div>
+          <div>
+            <h2>{this.state.traslation}</h2>
           </div>
         </div>
       </div>
