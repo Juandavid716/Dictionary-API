@@ -29,7 +29,7 @@ class App extends Component {
     return (
       <div className="App container">
         <div className="header mt-5 bg-primary ">
-          <h1 className="p-5">Dictionary Online</h1>
+          <h1 className="p-5">Dictionary</h1>
           <div className=" my-3">
             <div className="w-75 d-flex">
               <InputGroup className=" d-flex justify-content-end align-items-center w-100 mr-3 pr-4">
