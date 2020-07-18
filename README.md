@@ -2,7 +2,11 @@
 
 Dictionary English - German / German - English using API from <a href="https://tech.yandex.com/dictionary/"> Yandex </a> to practices and suppport languages learning.
 
+<img align="center" src="https://i.ibb.co/C9mhhQW/dicc.png" width="1200"  /> 
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
